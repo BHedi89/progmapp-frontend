@@ -1,0 +1,11 @@
+<div *ngFor="let pv of possibleAnswer.possibleAnswerValues" class="form-check">
+  <label>
+    <input type="checkbox" class="form-check-input" [name]="possibleAnswer.id" [value]="pv.id"
+           (change)="checkBoxChanged($event)">{{pv.text}}
+  </label>
+</div>
+
+
+
+
+

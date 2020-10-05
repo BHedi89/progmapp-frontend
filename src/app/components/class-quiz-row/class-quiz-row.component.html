@@ -1,0 +1,6 @@
+<td scope="row">{{quizWithClass.id}}</td>
+<td *ngFor="let c of quizWithClass.schoolClasses">{{c.id}}</td>
+<td>
+  <a routerLink="/eternal-quiz-class/{{ quizWithClass.id }}"><button type="button" class="btn btn-primary btn-sm mr-3">
+  Osztály hozzárendelése</button></a>
+</td>

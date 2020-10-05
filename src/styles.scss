@@ -1,4 +1,74 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$progmapp-frontend-primary: mat-palette($mat-indigo);
+$progmapp-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$progmapp-frontend-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$progmapp-frontend-theme: mat-light-theme((
+  color: (
+    primary: $progmapp-frontend-primary,
+    accent: $progmapp-frontend-accent,
+    warn: $progmapp-frontend-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($progmapp-frontend-theme);
+
 @import 'scss/variables';
 
 /* Importing Bootstrap SCSS file. */
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bootstrap/scss/bootstrap';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+body {
+  background-color: #e6e6ff;
+}
+
+.main-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.welcome-msg {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 30px;
+}
+
+.feedback-right-color{
+  color: goldenrod;
+}
+
+.feedback-partially-right-color{
+  color: darkgoldenrod;
+}
+
+.feedback-wrong-color{
+  color: darkcyan;
+}
+.centeredtext{
+  text-align: center;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

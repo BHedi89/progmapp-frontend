@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container main-container">
+  <form class="p-3">
+<!--    <div class="alert alert-success" role="alert" *ngIf="textShow">-->
+<!--      Osztály sikeresen létrehozva.-->
+<!--    </div>-->
+<!--    <div class="alert alert-danger" role="alert" *ngIf="textShow === false">-->
+<!--      Ezzel az id-val: {{class.id}} már létezik osztály a rendszerben.-->
+<!--    </div>-->
+    <h3 class="msg pb-4">Új osztály létrehozása</h3>
+    <div class="form-group row">
+      <label for="inputClassName" class="col-sm-2 col-form-label">Osztály neve</label>
+      <div class="col-sm-10 mb-3">
+        <input class="form-control" name="id" type="text" id="inputClassName" placeholder="Osztály neve"
+               [(ngModel)]="class.id">
+      </div>
+      <label for="inputYear" class="col-sm-2 col-form-label">Év</label>
+      <div class="col-sm-10 mb-3">
+        <input class="form-control" name="year" type="number" id="inputYear" placeholder="Év" [(ngModel)]="class.year">
+      </div>
+      <label for="inputSemester" class="col-sm-2 col-form-label">Félév</label>
+      <div class="col-sm-10 mb-3">
+        <select class="custom-select my-1 mr-sm-2" id="inputSemester" [(ngModel)]="class.semester">
+          <option value="spring">Tavasz</option>
+          <option value="autumn">Ősz</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary mr-2" (click)="submit()">Osztály létrehozása</button>
+        <a routerLink="/staff-class">
+          <button type="submit" class="btn btn-secondary">Vissza</button>
+        </a>
+      </div>
+    </div>
+  </form>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
+  </div>
+</div>
+
+

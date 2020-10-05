@@ -1,0 +1,42 @@
+$activeColor: black;
+$unactiveColor: grey;
+$unactiveHoverColor: darkgrey;
+
+.tab > input,
+.tab section > div {
+  display: none;
+}
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2 {
+  display: block;
+}
+
+.tab {
+  ul {
+    list-style: none;
+    li {
+      label {
+        float: left;
+        font-size: 25px;
+        &:hover {
+          color: $unactiveHoverColor;
+        }
+        &:active {
+          color: $activeColor;
+        }
+      }
+      &:not(:active) {
+        color: $unactiveColor;
+      }
+    }
+  }
+}
+
+#tab1:checked ~ nav .tab1,
+#tab2:checked ~ nav .tab2 {
+  label {
+    color: $activeColor;
+  }
+}
+

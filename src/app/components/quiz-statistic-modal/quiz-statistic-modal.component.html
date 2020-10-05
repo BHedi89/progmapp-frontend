@@ -1,0 +1,36 @@
+<app-header></app-header>
+<div class="container main-container">
+  <h1 class="welcome-msg">Statisztika</h1>
+  <form class="p-3">
+    <div class="form-group row" *ngIf="statistic.userId">
+      <label for="inputQuestionNumber" class="col-lg-3 control-label">Kérdések száma:</label>
+      <div class="col-lg-8">
+        <label id="inputQuestionNumber">{{statistic.nrOfAllQuestions}}</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputRightAnswers" class="col-lg-3 control-label">Helyes válaszok száma:</label>
+      <div class="col-lg-8">
+        <label id="inputRightAnswers">{{statistic.nrOfRightAnswers}}</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputWrongAnswers" class="col-lg-3 control-label">Helytelen válaszok száma:</label>
+      <div class="col-lg-8">
+        <label id="inputWrongAnswers">{{statistic.nrOfBadAnswers}}</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputGoalPercentage" class="col-lg-3 control-label">Elérendő százalék:</label>
+      <div class="col-lg-8">
+        <label id="inputGoalPercentage">{{statistic.targetPercentage}}</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPercent" class="col-md-3 control-label">Elért százalék:</label>
+      <div class="col-md-8">
+        <label id="inputPercent">{{statistic.achievedPercentage}}%</label>
+      </div>
+    </div>
+  </form>
+</div>

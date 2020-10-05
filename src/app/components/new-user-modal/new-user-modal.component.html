@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="container main-container">
+  <form class="p-3">
+    <div class="alert alert-success" role="alert" *ngIf="textShow">
+      Felhasználó sikeresen létrehozva
+    </div>
+    <h3 class="msg">Új felhasználó létrehozása</h3>
+    <div class="form-group row">
+      <label for="inputUserName" class="col-sm-2 col-form-label">Teljes név</label>
+      <div class="col-sm-10">
+        <input class="form-control" name="name" type="text" id="inputUserName" placeholder="Teljes név"
+               [(ngModel)]="user.name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUserLoginName" class="col-sm-2 col-form-label">Felhasználónév</label>
+      <div class="col-sm-10">
+        <input class="form-control" name="loginName" type="text" id="inputUserLoginName" placeholder="Felhasználónév"
+               [(ngModel)]="user.loginName">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUserpassword" class="col-sm-2 col-form-label">Jelszó (opcionális)</label>
+      <div class="col-sm-10">
+        <input class="form-control" name="password" type="text" id="inputUserpassword" placeholder="Jelszó"
+               [(ngModel)]="user.password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUserEmail" class="col-sm-2 col-form-label">Felhasználó email címe</label>
+      <div class="col-sm-10">
+        <input class="form-control" name="emailAddress" type="text" id="inputUserEmail" placeholder="Felhasználó email címe"
+               [(ngModel)]="user.emailAddress">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUserRole" class="col-sm-2 col-form-label">Szerepkör</label>
+      <div class="col-sm-10">
+        <ng-select [items]="roles"
+                   bindLabel="name"
+                   bindValue="id"
+                   [multiple]="true"
+                   placeholder="Válassz..."
+                   [(ngModel)]="user.roles"
+                   name="class"
+                   id="inputUserRole">
+        </ng-select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary mr-2" (click)="saveUser()">Felhasználó létrehozása és email küldése</button>
+        <a routerLink="/user"><button type="submit" class="btn btn-secondary">Vissza</button></a>
+      </div>
+    </div>
+  </form>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
+  </div>
+</div>
+
+

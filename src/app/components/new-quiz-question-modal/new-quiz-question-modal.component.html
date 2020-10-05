@@ -1,0 +1,94 @@
+<app-header></app-header>
+<div class="container main-container">
+  <h2 class="welcome-msg">Új kvízkérdés létrehozása</h2>
+  <form>
+    <div class="alert alert-success" role="alert" *ngIf="textShow">
+      Kvízkérdés sikeresen létrehozva
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="inputText">Kérdés szövege</label>
+      <div class="col-sm-10">
+        <div [froalaEditor]="options" [(froalaModel)]="question.text" id="inputText"></div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-form-label col-sm-2 pt-0">Kép (opcionális)</div>
+      <div class="col-sm-10">
+<!--        <label>Kiválasztott fájl: {{question.hasImage}}</label>-->
+        <img src="{{environment.serverUrl}}micimac1/imagefile" alt="" class="question-picture">
+        <div>
+          <input style="display: none" type="file" (change)="saveImage($event)" #fileInput>
+          <button class="btn btn-primary mt-2" (click)="fileInput.click()">Kép feltöltése</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputTextBefore" class="col-sm-2 col-form-label">Szöveg előtte</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputTextBefore" name="textBefore"
+               [(ngModel)]="question.possibleAnswers[0].textBefore">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputQuestionType" class="col-sm-2 col-form-label">Kérdés típusa</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="inputQuestionType" name="type"
+                [(ngModel)]="question.possibleAnswers[0].type">
+          <option value="default" selected disabled>Válassz...</option>
+          <option value="shortText">Rövid szöveg</option>
+          <option value="longText">Hosszú szüveg</option>
+          <option value="dropdown">Legördülő</option>
+          <option value="radioButtons">Radio gombok</option>
+          <option value="trueFalseCheckbox">Igaz/hamis checkbox</option>
+          <option value="checkboxList">Checkbox lista</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputAnswer" class="col-sm-2 col-form-label">Válaszok</label>
+      <div class="col-sm-10" *ngFor="let a of question.possibleAnswers[0].possibleAnswerValues; let f = first;">
+        <!-- let i = index; -->
+        <textarea id="inputAnswer" name="a.text" cols="50"
+                  [(ngModel)]="a.text" ></textarea> <!-- [ngClass]="{newElement: !f}" -->
+        <label><input class="ml-2" type="checkbox" name="isRightAnswer" [(ngModel)]="a.isRightAnswer">Jó válasz</label>
+        <button class="btn btn-danger ml-3 mb-4" >Törlés</button> <!-- *ngIf="!f" (click)="remove(i)" -->
+      </div>
+      <div class="col-sm-2 col-form-label"></div>
+      <div class="col-sm-10">
+        <button class="btn btn-outline-success" (click)="addNewPossibleAnswer()">
+          Új válaszlehetőség hozzáadása
+        </button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputFeedbackType" class="col-sm-2 col-form-label">Visszajelzés típusa</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="inputFeedbackType" name="feedbackType" [(ngModel)]="question.feedbackType">
+          <option value="default" selected disabled>Válassz...</option>
+          <option value="noFeedback">Nincs visszajelzés</option>
+          <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
+          <option value="showRightAnswer">Jó válasz megmutatása</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputExplain" class="col-sm-2 col-form-label">Magyarázat</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="5" cols="10" name="explanation"
+                  [(ngModel)]="question.explanationAfter">
+        </textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary mb-4" (click)="saveQuizQuestion()">Kvízkérdés létrehozása
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
+  </div>
+</div>
+

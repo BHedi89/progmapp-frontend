@@ -1,0 +1,8 @@
+<div class="mt-4 mb-4 pl-2 pr-2 source-code-box">
+  <code cdkDropList (cdkDropListDropped)="drop($event)" class="mt-3">
+    <div *ngFor="let pv of possibleAnswer.possibleAnswerValues" cdkDrag class="source-code-line">
+      {{pv.text}}
+    </div>
+  </code>
+</div>
+

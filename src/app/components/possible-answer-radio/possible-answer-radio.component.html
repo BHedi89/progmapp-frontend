@@ -1,0 +1,11 @@
+<div *ngFor="let pv of possibleAnswer.possibleAnswerValues" class="form-check">
+  <label>
+    <input type="radio" class="form-check-input" [name]="possibleAnswer.id" [value]="pv.id"
+           [(ngModel)]="selectedPoValue">{{pv.text}}
+  </label>
+</div>
+
+
+
+
+

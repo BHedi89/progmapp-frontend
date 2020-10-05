@@ -1,0 +1,6 @@
+<div class="form-group">
+  <select class="form-control" [(ngModel)]="selectedPoValue">
+    <option *ngFor="let pv of possibleAnswer.possibleAnswerValues" [ngValue]="pv.id">{{pv.text}}</option>
+  </select>
+</div>
+

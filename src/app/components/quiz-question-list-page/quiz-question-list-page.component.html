@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container main-container">
+  <h2 class="welcome-msg">kvízkérdések listája</h2>
+  <div>
+    <div class="form-group form-inline">
+      <label for="inputFilter" class="col-sm-1 col-form-label">Szűrő:</label>
+      <div>
+        <input class="form-control ml-2" type="text" id="inputFilter" [(ngModel)]="filter">
+      </div>
+    </div>
+    <div class="pb-3">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Kvízkérdések</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr app-quiz-question-row *ngFor="let q of questions" [question]="q"></tr>
+        </tbody>
+      </table>
+      <div *ngIf="questions.length === 0">
+        Nincs kvízkérdés az adatbázisban.
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
+  </div>
+</div>
+
+
+

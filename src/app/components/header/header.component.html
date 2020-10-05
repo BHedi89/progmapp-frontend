@@ -1,0 +1,42 @@
+<div class="header-container">
+  <div class="header">
+    <img src="/assets/img/progmaticlogo.png" class="logo" alt="logo">
+    <ul class="nav justify-content-center">
+      <li class="nav-item" *ngIf="isAdmin$ || isOffice$ | async">
+        <a class="nav-link active" routerLink="/staff-class">Osztályok</a>
+      </li>
+      <li class="nav-item" *ngIf="isTeacher$ | async">
+        <a class="nav-link active" routerLink="/teacher-class-page">Osztályok és kvízek</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin$ || isOffice$ | async">
+        <a class="nav-link" routerLink="/user">Felhasználók</a>
+      </li>
+      <li class="nav-item" *ngIf="isStudent$ | async">
+        <a class="nav-link" routerLink="/student-quiz-page">Kvíz</a>
+      </li>
+      <li class="nav-item" *ngIf="isTeacher$ | async">
+        <div ngbDropdown class="d-inline-block dropdown">
+          <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Kvízek</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a routerLink="/quiz-question-list" ngbDropdownItem>Kvízkérdések listája</a>
+            <a routerLink="/eternal-quiz-list" ngbDropdownItem>Örökkvízek listája</a>
+            <a routerLink="/new-quiz-question" ngbDropdownItem>Új kvízkérdés létrehozása</a>
+            <a routerLink="/new-eternal-quiz" ngbDropdownItem>Új örökkvíz létrehozása</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="welcome mt-4" *ngIf="(currentUser$ | async) !== null">
+      <p class="mb-0">Üdvözlünk</p>
+      <div ngbDropdown class="d-inline-block dropdown">
+        <a class="profile" id="dropdownBasic2" ngbDropdownToggle>{{ (currentUser$ | async).loginName }}!</a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+          <a routerLink="/profile" ngbDropdownItem>Profilom</a>
+          <a routerLink="/change-password" ngbDropdownItem>Jelszó megváltoztatása</a>
+          <a routerLink="/statistic" ngbDropdownItem *ngIf="isStudent$ | async">Statisztikám</a>
+          <button ngbDropdownItem (click)="logout()">Kijelentkezés</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

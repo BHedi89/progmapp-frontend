@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container main-container">
+  <h2 class="welcome-msg">osztályok</h2>
+  <div class="form-group">
+    <a routerLink="/new-class-modal"><button class="btn btn-primary mr-2">Új osztály létrehozása</button></a>
+  </div>
+  <div>
+    <div class="form-group form-inline">
+      <label for="inputFilter" class="col-sm-1 col-form-label">Szűrő:</label>
+      <div>
+        <input class="form-control" type="text" id="inputFilter" [(ngModel)]="filter">
+      </div>
+    </div>
+    <div class="pb-3">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Osztály neve</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr app-class-row *ngFor="let c of classes" [classesName]="c"></tr>
+        </tbody>
+      </table>
+      <div *ngIf="classes.length === 0">
+        Nincs osztály az adatbázisban.
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container main-container">
+  <div class="logo pt-3">
+    <img src="/assets/img/progmaticlogo.png" alt="logo">
+  </div>
+  <h1 class="welcome-msg">üdvözlünk a progmaticnál!</h1>
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Bejelentkezés</h5>
+          <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-label-group">
+              <input type="text" formControlName="name" id="inputUsername" class="form-control"
+                     placeholder="Felhasználónév" required autofocus
+                     [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Név megadása kötelező</div>
+              </div>
+              <label for="inputUsername">Felhasználónév</label>
+            </div>
+            <div class="form-label-group">
+              <input type="password" formControlName="password" id="inputPassword" class="form-control"
+                     placeholder="Jelszó" required
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Jelszó megadása kötelező</div>
+              </div>
+              <label for="inputPassword">Jelszó</label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Bejelentkezés</button>
+            <div *ngIf="error" class="alert alert-danger">Hibás felhasználó név vagy jelszó vagy nincs megerősítva az email.</div>
+            <hr class="my-4">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
+  </div>
+</div>
+
